@@ -1,5 +1,6 @@
 import {
     GET_PATIENTS,
+    GET_ALL_PATIENTS,
     GET_PATIENT,
     PATIENT_ERROR,
     DELETE_PATIENT,
@@ -9,6 +10,7 @@ import {
 
 const initialState = {
     patients: [],
+    allpatients: [],
     patient: null,
     loading: true,
     error: {}
@@ -24,6 +26,12 @@ export default function (state = initialState, action) {
                 patients: payload,
                 loading: false
             };
+        case GET_ALL_PATIENTS:
+            return {
+                ...state,
+                allpatients: payload,
+                loading: false
+            };
         case GET_PATIENT:
             return {
                 ...state,
@@ -34,18 +42,21 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 patients: [payload, ...state.patients],
+                allpatients: [payload, ...state.allpatients],
                 loading: false
             };
         case EDIT_PATIENT:
             return {
                 ...state,
                 patients: [payload, ...state.patients],
+                allpatients: [payload, ...state.allpatients],
                 loading: false
             };
         case DELETE_PATIENT:
             return {
                 ...state,
                 patients: state.patients.filter(post => post._id !== payload),
+                allpatients: state.allpatients.filter(post => post._id !== payload),
                 loading: false
             };
         case PATIENT_ERROR:

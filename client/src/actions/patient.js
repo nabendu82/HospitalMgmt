@@ -2,6 +2,7 @@ import axios from 'axios';
 import { setAlert } from './alert';
 import {
     GET_PATIENTS,
+    GET_ALL_PATIENTS,
     GET_PATIENT,
     PATIENT_ERROR,
     DELETE_PATIENT,
@@ -16,6 +17,24 @@ import {
 
         dispatch({
             type: GET_PATIENTS,
+            payload: res.data
+        });
+
+    } catch (err) {
+        dispatch({
+            type: PATIENT_ERROR,
+            payload: { msg: err.response.statusText, status: err.response.status }
+          });
+    }
+ }
+
+ //Get All Patients
+ export const getPatients = () => async dispatch => {
+    try {
+        const res = await axios.get('/api/patients');
+
+        dispatch({
+            type: GET_ALL_PATIENTS,
             payload: res.data
         });
 

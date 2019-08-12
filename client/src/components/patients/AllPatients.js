@@ -3,21 +3,21 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import PatientItem from './PatientItem';
-import { getMePatients } from '../../actions/patient';
+import { getPatients } from '../../actions/patient';
 
-const Patients = ({ getMePatients, patient: { patients, loading } }) => {
+const AllPatients = ({ getPatients, patient: { allpatients, loading } }) => {
     useEffect(() => {
-        getMePatients();
-    }, [getMePatients]);
-    console.log(patients);
+        getPatients();
+    }, [getPatients]);
+    console.log(allpatients);
     return loading ? <Spinner /> : (
         <>
-            <h1 className='large text-primary'>Patients</h1>
+            <h1 className='large text-primary'>All Patients</h1>
             <p className='lead'>
-                <i className='fas fa-user' /> Patients referred by Me
+                <i className='fas fa-user' /> All Patients records
             </p>
             <div className='patients'>
-                {patients && patients.map(pat => (
+                {allpatients && allpatients.map(pat => (
                     <PatientItem key={pat._id} patient={pat} />
                 ))}
             </div>
@@ -25,8 +25,8 @@ const Patients = ({ getMePatients, patient: { patients, loading } }) => {
     )
 }
 
-Patients.propTypes = {
-    getMePatients: PropTypes.func.isRequired,
+AllPatients.propTypes = {
+    getPatients: PropTypes.func.isRequired,
     patient: PropTypes.object.isRequired
 };
 
@@ -34,4 +34,4 @@ const mapStateToProps = state => ({
     patient: state.patient
 });
 
-export default connect(mapStateToProps, { getMePatients })(Patients);
+export default connect(mapStateToProps, { getPatients })(AllPatients);

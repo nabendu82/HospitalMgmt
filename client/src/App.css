@@ -250,6 +250,7 @@ img {
 .form input[type='email'],
 .form input[type='password'],
 .form input[type='date'],
+.form input[type='datetime-local'],
 .form select,
 .form textarea {
   display: block;
@@ -452,6 +453,14 @@ button {
 .profile-github > div:last-child {
   flex: 3;
   flex-basis: 20%;
+}
+
+.datearea{
+  display: block;
+  width: 100%;
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
 }
 
 /* Posts Page */

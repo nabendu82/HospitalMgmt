@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Link, withRouter, Redirect } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { editPatient, getPatient } from "../../actions/patient";
 import isEmpty from './is-empty';
+
 
 class EditPatientForm extends Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class EditPatientForm extends Component {
             speciality: "",
             doctor: "",
             nationality: "",
+            date: ""
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -37,6 +39,7 @@ class EditPatientForm extends Component {
             patient.speciality = !isEmpty(patient.speciality) ? patient.speciality : '';
             patient.doctor = !isEmpty(patient.doctor) ? patient.doctor : '';
             patient.nationality = !isEmpty(patient.nationality) ? patient.nationality : '';
+            patient.date = !isEmpty(patient.date) ? patient.date : '';
             // Set component fields state
             this.setState({
                 name: patient.name,
@@ -46,9 +49,11 @@ class EditPatientForm extends Component {
                 speciality: patient.speciality,
                 doctor: patient.doctor,
                 nationality: patient.nationality,
+                date: patient.date.substring(0, 16)
             });
         }
       }
+
 
     onSubmit(e) {
         e.preventDefault();
@@ -60,7 +65,8 @@ class EditPatientForm extends Component {
           gender: this.state.gender,
           speciality: this.state.speciality,
           doctor: this.state.doctor,
-          nationality: this.state.nationality
+          nationality: this.state.nationality,
+          date: this.state.date
         };
 
         this.props.editPatient(this.props.match.params.id, patientData, this.props.history);
@@ -145,8 +151,17 @@ class EditPatientForm extends Component {
                         onChange={this.onChange}
                     />
                 </div>
+                <div className='form-group'>
+                    <input
+                        type='datetime-local'
+                        placeholder='Appointment'
+                        name='date'
+                        value={this.state.date}
+                        onChange={this.onChange}
+                    />
+                </div>
                 <input type='submit' className='btn btn-primary my-1' />
-                <Link className='btn btn-light my-1' to='/patients'>
+                <Link className='btn btn-light my-1' to='/patients/me'>
                     Go Back
                 </Link>
             </form>

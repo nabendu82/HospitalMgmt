@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { deletePatient } from '../../actions/patient';
 import './patient.css';
 
-const Patient = ({ auth, deletePatient, patient }) => {
+const PatientItem = ({ auth, deletePatient, patient }) => {
     return (
         <div className='bg-white p-1 my-1'>
             <h1 className='lead text-dark'>{patient.name}</h1>
@@ -21,22 +21,22 @@ const Patient = ({ auth, deletePatient, patient }) => {
                 </div>
             </div>
             <Link to={`/patients/${patient._id}`} className='btn btn-primary'>Details</Link>
-            <Link to={`/edit-patient/${patient._id}`} className='btn btn-primary'>Edit</Link>
             {!auth.loading && patient.user === auth.user._id && (
-            <button
-              onClick={() => deletePatient(patient._id)}
-              type='button'
-              className='btn btn-danger'
-            >
-              <i className='fas fa-times' />
-            </button>
+            <>
+                <Link to={`/edit-patient/${patient._id}`} className='btn btn-primary'>Edit</Link>
+                <button
+                onClick={() => deletePatient(patient._id)}
+                type='button' className='btn btn-danger'>
+                <i className='fas fa-times' />
+                </button>
+            </>
           )}
 
         </div>
     )
 }
 
-Patient.propTypes = {
+PatientItem.propTypes = {
     patient: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
     deletePatient: PropTypes.func.isRequired
@@ -46,4 +46,4 @@ const mapStateToProps = state => ({
     auth: state.auth
   });
 
-export default connect(mapStateToProps, {deletePatient})(Patient);
+export default connect(mapStateToProps, {deletePatient})(PatientItem);

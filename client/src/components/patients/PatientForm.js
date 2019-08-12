@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, withRouter, Redirect } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addPatient } from "../../actions/patient";
@@ -13,6 +13,7 @@ const PatientForm = ({ addPatient, history }) => {
         speciality: "",
         doctor: "",
         nationality: "",
+        date: ""
     });
 
     const {
@@ -22,7 +23,8 @@ const PatientForm = ({ addPatient, history }) => {
         gender,
         speciality,
         doctor,
-        nationality
+        nationality,
+        date
     } = formData;
 
     const onChange = e =>
@@ -31,6 +33,8 @@ const PatientForm = ({ addPatient, history }) => {
         e.preventDefault();
         addPatient(formData, history);
     };
+
+    console.log(date);
 
     return (
         <>
@@ -105,8 +109,17 @@ const PatientForm = ({ addPatient, history }) => {
                         onChange={e => onChange(e)}
                     />
                 </div>
+                <div className='form-group'>
+                    <input
+                        type='datetime-local'
+                        placeholder='Appointment'
+                        name='date'
+                        value={date}
+                        onChange={e => onChange(e)}
+                    />
+                </div>
                 <input type='submit' className='btn btn-primary my-1' />
-                <Link className='btn btn-light my-1' to='/home'>
+                <Link className='btn btn-light my-1' to='/patients/me'>
                     Go Back
                 </Link>
             </form>

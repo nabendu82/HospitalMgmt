@@ -4,19 +4,20 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getPatient } from "../../actions/patient";
+import Moment from 'react-moment';
 
 const Patient = ({ getPatient, patient: { patient, loading }, match }) => {
+
     useEffect(() => {
         getPatient(match.params.id);
     }, [getPatient]);
 
-    console.log(patient);
-
     return loading || patient === null ? (
         <Spinner />
     ) : (
+
             <>
-                <Link to='/patients' className='btn'>
+                <Link to='/patients/me' className='btn'>
                     Back To Patients
                 </Link>
                 <div className='form'>
@@ -76,6 +77,10 @@ const Patient = ({ getPatient, patient: { patient, loading }, match }) => {
                         value={patient.nationality}
                         readOnly
                     />
+                    <label htmlFor='date'>Appointment</label>
+                    <div className="datearea">
+                        <Moment format='LLL'>{patient.date}</Moment>
+                    </div>
                 </div>
             </>
         );

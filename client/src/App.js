@@ -7,6 +7,7 @@ import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
 import Home from './components/home/Home';
 import Patients from './components/patients/Patients';
+import AllPatients from './components/patients/AllPatients';
 import Patient from './components/patient/Patient';
 import PatientForm from './components/patients/PatientForm';
 import EditPatientForm from './components/patients/EditPatientForm';
@@ -40,7 +41,8 @@ const App = () => {
               <Route exact path='/login' component={Login} />
               <PrivateRoute exact path='/home' component={Home} />
               <PrivateRoute exact path='/add-patient' component={PatientForm} />
-              <PrivateRoute exact path='/patients' component={Patients} />
+              <PrivateRoute exact path='/patients' component={AllPatients} />
+              <PrivateRoute exact path='/patients/me' component={Patients} />
               <PrivateRoute exact path='/edit-patient/:id' component={EditPatientForm} />
               <PrivateRoute exact path='/patients/:id' component={Patient} />
             </Switch>
