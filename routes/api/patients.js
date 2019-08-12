@@ -44,7 +44,7 @@ router.post(
         if (mobile) patientField.mobile = mobile;
         if (age) patientField.age = age;
         if (gender) patientField.gender = gender;
-        if (speciality) patientField.status = speciality;
+        if (speciality) patientField.speciality = speciality;
         if (doctor) patientField.doctor = doctor;
         if (date) patientField.date = date;
         if (nationality) patientField.nationality = nationality;

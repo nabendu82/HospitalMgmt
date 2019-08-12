@@ -1,0 +1,38 @@
+  /*Home Page*/
+  .home-flex {
+    color: #fff;
+    height: 100vh;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+  }
+
+  .home-flex > * {
+      margin-bottom: 1.5rem;
+  }
+
+  .home-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+
+  .home-light {
+    background: #f6f7f9;
+    border: 1px solid #ced0d4;
+    color: #4b4f56;
+  }
+
+  .home-light:hover{
+    background: #e9ebee;
+}
+
+.home-light:active{
+    background: #d8dade;
+    border-color: #d8dade;
+}
+
