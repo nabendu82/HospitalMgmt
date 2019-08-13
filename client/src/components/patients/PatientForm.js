@@ -11,6 +11,7 @@ const PatientForm = ({ addPatient, history }) => {
         age: "",
         gender: "",
         speciality: "",
+        hospital: "",
         doctor: "",
         nationality: "",
         date: ""
@@ -22,6 +23,7 @@ const PatientForm = ({ addPatient, history }) => {
         age,
         gender,
         speciality,
+        hospital,
         doctor,
         nationality,
         date
@@ -88,6 +90,15 @@ const PatientForm = ({ addPatient, history }) => {
                         placeholder='Speciality'
                         name='speciality'
                         value={speciality}
+                        onChange={e => onChange(e)}
+                    />
+                </div>
+                <div className='form-group'>
+                    <input
+                        type='text'
+                        placeholder='Hospital'
+                        name='hospital'
+                        value={hospital}
                         onChange={e => onChange(e)}
                     />
                 </div>

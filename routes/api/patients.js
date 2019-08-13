@@ -31,6 +31,7 @@ router.post(
             age,
             gender,
             speciality,
+            hospital,
             doctor,
             date,
             nationality
@@ -45,6 +46,7 @@ router.post(
         if (age) patientField.age = age;
         if (gender) patientField.gender = gender;
         if (speciality) patientField.speciality = speciality;
+        if (hospital) patientField.hospital = hospital;
         if (doctor) patientField.doctor = doctor;
         if (date) patientField.date = date;
         if (nationality) patientField.nationality = nationality;
@@ -146,6 +148,7 @@ router.put('/:id', auth, async (req, res) => {
         age,
         gender,
         speciality,
+        hospital,
         doctor,
         date,
         nationality
@@ -157,7 +160,8 @@ router.put('/:id', auth, async (req, res) => {
     if (mobile) patientField.mobile = mobile;
     if (age) patientField.age = age;
     if (gender) patientField.gender = gender;
-    if (speciality) patientField.status = speciality;
+    if (speciality) patientField.speciality = speciality;
+    if (hospital) patientField.hospital = hospital;
     if (doctor) patientField.doctor = doctor;
     if (date) patientField.date = date;
     if (nationality) patientField.nationality = nationality;

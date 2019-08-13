@@ -25,8 +25,7 @@ const PatientSchema = new mongoose.Schema({
         type: String
     },
     hospital: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'hospital'
+        type: String
     },
     doctor: {
         type: String

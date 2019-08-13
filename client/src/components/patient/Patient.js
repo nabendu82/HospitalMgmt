@@ -61,7 +61,15 @@ const Patient = ({ getPatient, patient: { patient, loading }, match }) => {
                         value={patient.speciality}
                         readOnly
                     />
-                    <label htmlFor='speciality'>Doctor</label>
+                    <label htmlFor='hospital'>Hospital</label>
+                    <input
+                        type='text'
+                        id='hospital'
+                        name='hospital'
+                        value={patient.hospital}
+                        readOnly
+                    />
+                    <label htmlFor='doctor'>Doctor</label>
                     <input
                         type='text'
                         id='doctor'

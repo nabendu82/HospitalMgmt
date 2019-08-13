@@ -15,6 +15,7 @@ class EditPatientForm extends Component {
             age: "",
             gender: "",
             speciality: "",
+            hospital: "",
             doctor: "",
             nationality: "",
             date: ""
@@ -37,6 +38,7 @@ class EditPatientForm extends Component {
             patient.age = !isEmpty(patient.age) ? patient.age : '';
             patient.gender = !isEmpty(patient.gender) ? patient.gender : '';
             patient.speciality = !isEmpty(patient.speciality) ? patient.speciality : '';
+            patient.hospital = !isEmpty(patient.hospital) ? patient.hospital : '';
             patient.doctor = !isEmpty(patient.doctor) ? patient.doctor : '';
             patient.nationality = !isEmpty(patient.nationality) ? patient.nationality : '';
             patient.date = !isEmpty(patient.date) ? patient.date : '';
@@ -47,6 +49,7 @@ class EditPatientForm extends Component {
                 age: patient.age,
                 gender: patient.gender,
                 speciality: patient.speciality,
+                hospital: patient.hospital,
                 doctor: patient.doctor,
                 nationality: patient.nationality,
                 date: patient.date.substring(0, 16)
@@ -64,6 +67,7 @@ class EditPatientForm extends Component {
           age: this.state.age,
           gender: this.state.gender,
           speciality: this.state.speciality,
+          hospital: this.state.hospital,
           doctor: this.state.doctor,
           nationality: this.state.nationality,
           date: this.state.date
@@ -130,6 +134,15 @@ class EditPatientForm extends Component {
                         placeholder='Speciality'
                         name='speciality'
                         value={this.state.speciality}
+                        onChange={this.onChange}
+                    />
+                </div>
+                <div className='form-group'>
+                    <input
+                        type='text'
+                        placeholder='Hospital'
+                        name='hospital'
+                        value={this.state.hospital}
                         onChange={this.onChange}
                     />
                 </div>
