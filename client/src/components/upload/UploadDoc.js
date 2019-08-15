@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import Buttons from './Buttons'
-import { API_URL } from './config'
+import Notifications, { notify } from 'react-notify-toast'
 import './UploadDoc.css'
 import axios from 'axios';
 
 const toastColor = {
-  background: '#505050',
+  background: 'red',
   text: '#fff'
 }
 
@@ -15,6 +15,8 @@ export default class App extends Component {
     uploading: false,
     images: []
   }
+
+  toast = notify.createShowQueue()
 
   onChange = e => {
     const errs = []
@@ -96,6 +98,7 @@ export default class App extends Component {
 
     return (
       <>
+        <Notifications />
         <div className='buttons'>
           {content()}
         </div>
