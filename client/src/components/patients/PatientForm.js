@@ -3,6 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addPatient } from "../../actions/patient";
+import UploadDoc from '../upload/UploadDoc';
 
 const PatientForm = ({ addPatient, history }) => {
     const [formData, setFormData] = useState({
@@ -128,6 +129,9 @@ const PatientForm = ({ addPatient, history }) => {
                         value={date}
                         onChange={e => onChange(e)}
                     />
+                </div>
+                <div className='form-group'>
+                    <UploadDoc />
                 </div>
                 <input type='submit' className='btn btn-primary my-1' />
                 <Link className='btn btn-light my-1' to='/patients/me'>
