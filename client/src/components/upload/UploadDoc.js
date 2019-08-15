@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-// import Notifications, { notify } from 'react-notify-toast'
-//import Spinner from './Spinner'
 import Buttons from './Buttons'
 import { API_URL } from './config'
 import './UploadDoc.css'
@@ -17,9 +15,6 @@ export default class App extends Component {
     uploading: false,
     images: []
   }
-
-
-//   toast = notify.createShowQueue()
 
   onChange = e => {
     const errs = []
@@ -82,7 +77,6 @@ export default class App extends Component {
 
 
   onError = id => {
-    //this.toast('Oops, something went wrong', 'custom', 2000, toastColor)
     this.setState({ images: this.filter(id) })
   }
 
@@ -92,7 +86,6 @@ export default class App extends Component {
     const content = () => {
       switch(true) {
         case uploading:
-          //return <Spinner />
           return <div>Loading...</div>
         case images.length > 0:
           return <div>Aadhar/Passport Uploaded</div>
@@ -103,7 +96,6 @@ export default class App extends Component {
 
     return (
       <>
-        {/* <Notifications /> */}
         <div className='buttons'>
           {content()}
         </div>

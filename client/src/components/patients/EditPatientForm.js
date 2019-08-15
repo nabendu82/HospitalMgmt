@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { editPatient, getPatient } from "../../actions/patient";
 import isEmpty from './is-empty';
-
+import UploadDoc from '../upload/UploadDoc';
 
 class EditPatientForm extends Component {
     constructor(props) {
@@ -172,6 +172,9 @@ class EditPatientForm extends Component {
                         value={this.state.date}
                         onChange={this.onChange}
                     />
+                </div>
+                <div className='form-group'>
+                    <UploadDoc />
                 </div>
                 <input type='submit' className='btn btn-primary my-1' />
                 <Link className='btn btn-light my-1' to='/patients/me'>
