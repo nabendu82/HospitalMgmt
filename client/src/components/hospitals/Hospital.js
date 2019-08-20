@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import { getHospital } from "../../actions/hospital";
-import Moment from 'react-moment';
 
 const Hospital = ({ getHospital, hospital: { hospital, loading }, match }) => {
 

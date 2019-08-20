@@ -14,9 +14,20 @@
       margin-bottom: 1.5rem;
   }
 
+  .inner-home-flex{
+    margin-top: 14.5rem;
+  }
+
   .home-btn {
     display: inline-block;
     padding: 1rem 2rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+
+  .inner-home-btn{
+    display: inline-block;
+    padding: 0.5rem 2rem;
     font-size: 1.3rem;
     cursor: pointer;
   }

@@ -1,6 +1,7 @@
 /* Global Styles */
 :root {
   --primary-color: #17a2b8;
+  --orange-color:#F07639;
   --dark-color: #343a40;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
@@ -49,6 +50,8 @@ img {
   font-size: 4rem;
   line-height: 1.2;
   margin-bottom: 1rem;
+  color: var(--orange-color);
+  text-shadow: #474747 3px 5px 2px;
 }
 
 .large {
@@ -173,10 +176,14 @@ img {
 }
 
 .btn-dark,
-.bg-dark,
 .badge-dark,
 .alert-dark {
   background: var(--dark-color);
+  color: #fff;
+}
+
+.bg-dark{
+  background: var(--orange-color);
   color: #fff;
 }
 

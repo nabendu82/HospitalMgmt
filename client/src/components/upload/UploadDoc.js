@@ -65,7 +65,7 @@ export default class App extends Component {
       })
     })
     .catch(err => {
-        if(err.statusText && err.statusText == "OK"){
+        if(err.statusText && err.statusText === "OK"){
             this.setState({ uploading: false, images: [...this.state.images, err.data[0].url] })
             console.log("Inside catch", err.data[0].url)
             console.log(err);

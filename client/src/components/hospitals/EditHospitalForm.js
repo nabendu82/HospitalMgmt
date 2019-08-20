@@ -24,7 +24,7 @@ class EditHospitalForm extends Component {
         this.props.getHospital(this.props.match.params.id);
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if(nextProps.hospital.hospital) {
             const hospital = nextProps.hospital.hospital;
 

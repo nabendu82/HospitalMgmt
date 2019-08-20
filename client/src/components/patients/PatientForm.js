@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addPatient } from "../../actions/patient";
+import { getHospitals } from '../../actions/hospital';
 import UploadDoc from '../upload/UploadDoc';
 
-const PatientForm = ({ addPatient, history }) => {
+const PatientForm = ({ getHospitals, hospital: { allhospitals }, addPatient, history }) => {
+    useEffect(() => {
+        getHospitals();
+    }, [getHospitals]);
+
     const [formData, setFormData] = useState({
         name: "",
         mobile: "",
@@ -37,7 +42,7 @@ const PatientForm = ({ addPatient, history }) => {
         addPatient(formData, history);
     };
 
-    console.log(date);
+    console.log(allhospitals);
 
     return (
         <>
@@ -95,13 +100,13 @@ const PatientForm = ({ addPatient, history }) => {
                     />
                 </div>
                 <div className='form-group'>
-                    <input
-                        type='text'
-                        placeholder='Hospital'
-                        name='hospital'
-                        value={hospital}
-                        onChange={e => onChange(e)}
-                    />
+                    <select name='hospital' value={hospital} onChange={e => onChange(e)}>
+                        <option value='0'>Select Hospital</option>
+                        {allhospitals &&
+                            allhospitals.map(hospital => <option key={hospital._id}
+                            value={hospital.name}>{hospital.name}</option>)
+                        }
+                    </select>
                 </div>
                 <div className='form-group'>
                     <input
@@ -144,7 +149,13 @@ const PatientForm = ({ addPatient, history }) => {
 }
 
 PatientForm.propTypes = {
-    addPatient: PropTypes.func.isRequired
+    addPatient: PropTypes.func.isRequired,
+    getHospitals: PropTypes.func.isRequired,
+    hospital: PropTypes.object.isRequired
 }
 
-export default connect(null, {addPatient})(withRouter(PatientForm));
+const mapStateToProps = state => ({
+    hospital: state.hospital
+});
+
+export default connect(mapStateToProps, { addPatient, getHospitals })(withRouter(PatientForm));

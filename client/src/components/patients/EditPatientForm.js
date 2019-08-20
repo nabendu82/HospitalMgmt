@@ -28,7 +28,7 @@ class EditPatientForm extends Component {
         this.props.getPatient(this.props.match.params.id);
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         if(nextProps.patient.patient) {
             const patient = nextProps.patient.patient;
 
@@ -144,6 +144,7 @@ class EditPatientForm extends Component {
                         name='hospital'
                         value={this.state.hospital}
                         onChange={this.onChange}
+                        readOnly
                     />
                 </div>
                 <div className='form-group'>
