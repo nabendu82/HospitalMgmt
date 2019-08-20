@@ -17,7 +17,13 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
               <Link to='/patients'>All Patients</Link>
           </li>
           <li>
-              <Link to='/add-patient'>Register</Link>
+              <Link to='/add-patient'>Add Patient</Link>
+          </li>
+          <li>
+              <Link to='/hospitals'>Hospitals</Link>
+          </li>
+          <li>
+              <Link to='/add-hospital'>Add Hospital</Link>
           </li>
           <li>
             <a onClick={logout} href='#!'>
