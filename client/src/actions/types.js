@@ -20,3 +20,5 @@ export const ADD_HOSPITAL = 'ADD_HOSPITAL';
 export const GET_HOSPITAL = 'GET_HOSPITAL';
 export const EDIT_HOSPITAL = 'EDIT_HOSPITAL';
 export const DELETE_HOSPITAL = 'DELETE_HOSPITAL';
+export const FORGOT_SUCCESS = 'FORGOT_SUCCESS';
+export const FORGOT_FAIL = 'FORGOT_FAIL';

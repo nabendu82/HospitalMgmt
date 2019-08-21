@@ -7,6 +7,8 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  FORGOT_SUCCESS,
+  FORGOT_FAIL,
   LOGOUT
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
@@ -94,6 +96,39 @@ export const login = (email, password) => async dispatch => {
       });
     }
   };
+
+// Forgot Password
+export const forgot = (email, password) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  const body = JSON.stringify({ email, password });
+  console.log(body);
+
+  try {
+    const res = await axios.put('/api/users', body, config);
+
+    dispatch({
+      type: FORGOT_SUCCESS,
+      payload: res.data
+    });
+
+    dispatch(loadUser());
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
+
+    dispatch({
+      type: FORGOT_FAIL
+    });
+  }
+};
 
   // Logout / Clear Profile
 export const logout = () => dispatch => {

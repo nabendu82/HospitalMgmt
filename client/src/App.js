@@ -4,6 +4,7 @@ import Navbar from './components/layout/Navbar';
 import Landing from './components/layout/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import Forgot from './components/auth/Forgot';
 import Alert from './components/layout/Alert';
 import Home from './components/home/Home';
 import Patients from './components/patients/Patients';
@@ -43,6 +44,7 @@ const App = () => {
             <Switch>
               <Route exact path='/register' component={Register} />
               <Route exact path='/login' component={Login} />
+              <Route exact path='/forgot' component={Forgot} />
               <PrivateRoute exact path='/home' component={Home} />
               <PrivateRoute exact path='/add-patient' component={PatientForm} />
               <PrivateRoute exact path='/patients' component={AllPatients} />
