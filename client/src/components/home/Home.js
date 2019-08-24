@@ -7,7 +7,7 @@ const Home = () => {
         <div className="home-flex">
             <Link to='/add-patient' className="home-btn home-light">Patient Registration</Link>
             <Link to='/patients/me' className="home-btn home-light">Patient List</Link>
-            <Link to='/login' className="home-btn home-light">Patient Status</Link>
+            <Link to='/patients' className="home-btn home-light">Patient Status</Link>
             <div className="home-light inner-home-flex">
                 <div>
                     <div className="inner-home-btn">Need help?</div>

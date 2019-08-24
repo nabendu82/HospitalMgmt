@@ -21,7 +21,7 @@ const PatientItem = ({ auth, deletePatient, patient }) => {
                 </div>
             </div>
             <Link to={`/patients/${patient._id}`} className='btn btn-primary'>Details</Link>
-            {!auth.loading && patient.user === auth.user._id && (
+            {!auth.loading && (
             <>
                 <Link to={`/edit-patient/${patient._id}`} className='btn btn-primary'>Edit</Link>
                 <button

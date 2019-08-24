@@ -36,6 +36,10 @@ const PatientSchema = new mongoose.Schema({
     },
     nationality: {
         type: String
+    },
+    patientstatus: {
+        type: String,
+        enum: ["Submitted", "RefHospital", "HospAccepted", "HospRejected", "OPUnderTreat", "OPTreatDone", "IPUnderTreat", "IPTreatDone", "Discharged", "PtInProgess", "ClaimNow", "PointsRedeemed"]
     }
 });
 

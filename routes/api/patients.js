@@ -151,7 +151,8 @@ router.put('/:id', auth, async (req, res) => {
         hospital,
         doctor,
         date,
-        nationality
+        nationality,
+        patientstatus
     } = req.body;
 
     //Build Patients object
@@ -165,6 +166,7 @@ router.put('/:id', auth, async (req, res) => {
     if (doctor) patientField.doctor = doctor;
     if (date) patientField.date = date;
     if (nationality) patientField.nationality = nationality;
+    if (patientstatus) patientField.patientstatus = patientstatus;
     try {
     let patient = await Patient.findOneAndUpdate(
         { _id: req.params.id },

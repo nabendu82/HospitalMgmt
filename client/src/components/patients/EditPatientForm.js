@@ -18,7 +18,8 @@ class EditPatientForm extends Component {
             hospital: "",
             doctor: "",
             nationality: "",
-            date: ""
+            date: "",
+            patientstatus: ""
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -42,6 +43,7 @@ class EditPatientForm extends Component {
             patient.doctor = !isEmpty(patient.doctor) ? patient.doctor : '';
             patient.nationality = !isEmpty(patient.nationality) ? patient.nationality : '';
             patient.date = !isEmpty(patient.date) ? patient.date : '';
+            patient.patientstatus = !isEmpty(patient.patientstatus) ? patient.patientstatus : '';
             // Set component fields state
             this.setState({
                 name: patient.name,
@@ -52,7 +54,8 @@ class EditPatientForm extends Component {
                 hospital: patient.hospital,
                 doctor: patient.doctor,
                 nationality: patient.nationality,
-                date: patient.date.substring(0, 16)
+                date: patient.date.substring(0, 16),
+                patientstatus: patient.patientstatus
             });
         }
       }
@@ -70,7 +73,8 @@ class EditPatientForm extends Component {
           hospital: this.state.hospital,
           doctor: this.state.doctor,
           nationality: this.state.nationality,
-          date: this.state.date
+          date: this.state.date,
+          patientstatus: this.state.patientstatus
         };
 
         this.props.editPatient(this.props.match.params.id, patientData, this.props.history);
@@ -126,6 +130,23 @@ class EditPatientForm extends Component {
                         <option value='Male'>Male</option>
                         <option value='Female'>Female</option>
                         <option value='Others'>Others</option>
+                    </select>
+                </div>
+                <div className='form-group'>
+                    <select name='patientstatus' value={this.state.patientstatus} onChange={this.onChange}>
+                        <option value='0'>Select Patient Status</option>
+                        <option value='Submitted'>Submitted</option>
+                        <option value='RefHospital'>Ref to Hospital</option>
+                        <option value='HospAccepted'>Hospital Accepted</option>
+                        <option value='HospRejected'>Hospital Rejected</option>
+                        <option value='OPUnderTreat'>OP Under Treatment</option>
+                        <option value='OPTreatDone'>OP Treatment Done</option>
+                        <option value='IPUnderTreat'>IP Under Treatment</option>
+                        <option value='IPTreatDone'>IP Treatment Done</option>
+                        <option value='Discharged'>Discharged</option>
+                        <option value='PtInProgess'>Points In Progess</option>
+                        <option value='ClaimNow'>Claim Now</option>
+                        <option value='PointsRedeemed'>Points Redeemed</option>
                     </select>
                 </div>
                 <div className='form-group'>

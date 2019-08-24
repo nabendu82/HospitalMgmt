@@ -10,17 +10,18 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
         name: '',
         email: '',
         password: '',
-        password2: ''
+        password2: '',
+        avatar: ''
     });
 
-    const { name, email, password, password2 } = formData;
+    const { name, email, password, password2, avatar } = formData;
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
     const onSubmit = e => {
         e.preventDefault();
         if (password !== password2) {
             setAlert('Passwords do not match', 'danger');
         } else {
-            register({ name, email, password });
+            register({ name, email, password, avatar });
         }
       };
 
@@ -50,8 +51,13 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                         value={email}
                         onChange={e => onChange(e)}
                     />
-                    <small className="form-text">This site uses Gravatar so if
-                    you want a profile image, use a Gravatar email</small>
+                </div>
+                <div className='form-group'>
+                    <select name='avatar' value={avatar} onChange={e => onChange(e)}>
+                        <option value='0'>Are you a doctor?</option>
+                        <option value='Doctor'>Yes</option>
+                        <option value='NotDoctor'>No</option>
+                    </select>
                 </div>
                 <div className="form-group">
                     <input
