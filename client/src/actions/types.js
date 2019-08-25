@@ -22,3 +22,5 @@ export const EDIT_HOSPITAL = 'EDIT_HOSPITAL';
 export const DELETE_HOSPITAL = 'DELETE_HOSPITAL';
 export const FORGOT_SUCCESS = 'FORGOT_SUCCESS';
 export const FORGOT_FAIL = 'FORGOT_FAIL';
+export const GET_ALL_USERS = 'GET_ALL_USERS';
+export const USER_ERROR = 'USER_ERROR';

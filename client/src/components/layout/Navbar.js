@@ -23,6 +23,9 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
               <Link to='/add-hospital'>Add Hospital</Link>
           </li>
           <li>
+              <Link to='/users'>Users</Link>
+          </li>
+          <li>
             <a onClick={logout} href='#!'>
               <i className='fas fa-sign-out-alt' />{' '}
               <span className='hide-sm'>Logout</span>

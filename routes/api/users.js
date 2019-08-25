@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
@@ -134,5 +135,18 @@ router.put(
     }
   }
 );
+
+// @route    GET api/users
+// @desc     Get all users
+// @access   Private
+router.get('/', auth, async (req, res) => {
+  try {
+    const users = await User.find().sort({ date: -1 });
+    res.json(users);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 module.exports = router;

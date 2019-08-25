@@ -7,6 +7,8 @@ import {
     LOGIN_FAIL,
     FORGOT_SUCCESS,
     FORGOT_FAIL,
+    GET_ALL_USERS,
+    USER_ERROR,
     LOGOUT
   } from '../actions/types';
 
@@ -14,7 +16,8 @@ import {
     token: localStorage.getItem('token'),
     isAuthenticated: null,
     loading: true,
-    user: null
+    user: null,
+    allusers:[]
   };
 
   export default function(state = initialState, action) {
@@ -26,6 +29,12 @@ import {
           isAuthenticated: true,
           loading: false,
           user: payload
+        };
+      case GET_ALL_USERS:
+        return {
+            ...state,
+            allusers: payload,
+            loading: false
         };
       case REGISTER_SUCCESS:
       case LOGIN_SUCCESS:
@@ -48,6 +57,12 @@ import {
           token: null,
           isAuthenticated: false,
           loading: false
+        };
+      case USER_ERROR:
+        return {
+            ...state,
+            error: payload,
+            loading: false
         };
       default:
         return state;

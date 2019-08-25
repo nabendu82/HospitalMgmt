@@ -10,6 +10,7 @@ import Home from './components/home/Home';
 import Patients from './components/patients/Patients';
 import AllPatients from './components/patients/AllPatients';
 import AllHospitals from './components/hospitals/AllHospitals';
+import AllUsers from './components/auth/AllUsers';
 import Patient from './components/patient/Patient';
 import Hospital from './components/hospitals/Hospital';
 import PatientForm from './components/patients/PatientForm';
@@ -51,6 +52,7 @@ const App = () => {
               <PrivateRoute exact path='/add-hospital' component={HospitalForm} />
               <PrivateRoute exact path='/hospitals' component={AllHospitals} />
               <PrivateRoute exact path='/patients/me' component={Patients} />
+              <PrivateRoute exact path='/users' component={AllUsers} />
               <PrivateRoute exact path='/edit-patient/:id' component={EditPatientForm} />
               <PrivateRoute exact path='/edit-hospital/:id' component={EditHospitalForm} />
               <PrivateRoute exact path='/patients/:id' component={Patient} />
