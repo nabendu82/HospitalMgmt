@@ -86,6 +86,7 @@ class EditPatientForm extends Component {
       }
 
     render() {
+        const auth = this.props.auth;
     return (
         <>
             <h1 className='large text-primary'>Edit a Patient</h1>
@@ -132,23 +133,26 @@ class EditPatientForm extends Component {
                         <option value='Others'>Others</option>
                     </select>
                 </div>
-                <div className='form-group'>
-                    <select name='patientstatus' value={this.state.patientstatus} onChange={this.onChange}>
-                        <option value='0'>Select Patient Status</option>
-                        <option value='Submitted'>Submitted</option>
-                        <option value='RefHospital'>Ref to Hospital</option>
-                        <option value='HospAccepted'>Hospital Accepted</option>
-                        <option value='HospRejected'>Hospital Rejected</option>
-                        <option value='OPUnderTreat'>OP Under Treatment</option>
-                        <option value='OPTreatDone'>OP Treatment Done</option>
-                        <option value='IPUnderTreat'>IP Under Treatment</option>
-                        <option value='IPTreatDone'>IP Treatment Done</option>
-                        <option value='Discharged'>Discharged</option>
-                        <option value='PtInProgess'>Points In Progess</option>
-                        <option value='ClaimNow'>Claim Now</option>
-                        <option value='PointsRedeemed'>Points Redeemed</option>
-                    </select>
-                </div>
+                {auth.user && auth.user.role === "Admin" && (
+                    <div className='form-group'>
+                        <select name='patientstatus' value={this.state.patientstatus} onChange={this.onChange}>
+                            <option value='0'>Select Patient Status</option>
+                            <option value='Submitted'>Submitted</option>
+                            <option value='RefHospital'>Ref to Hospital</option>
+                            <option value='HospAccepted'>Hospital Accepted</option>
+                            <option value='HospRejected'>Hospital Rejected</option>
+                            <option value='OPUnderTreat'>OP Under Treatment</option>
+                            <option value='OPTreatDone'>OP Treatment Done</option>
+                            <option value='IPUnderTreat'>IP Under Treatment</option>
+                            <option value='IPTreatDone'>IP Treatment Done</option>
+                            <option value='Discharged'>Discharged</option>
+                            <option value='PtInProgess'>Points In Progess</option>
+                            <option value='ClaimNow'>Claim Now</option>
+                            <option value='PointsRedeemed'>Points Redeemed</option>
+                        </select>
+                    </div>
+                )}
+
                 <div className='form-group'>
                     <input
                         type='text'
@@ -212,11 +216,13 @@ class EditPatientForm extends Component {
 EditPatientForm.propTypes = {
     editPatient: PropTypes.func.isRequired,
     getPatient: PropTypes.func.isRequired,
-    patient: PropTypes.object.isRequired
+    patient: PropTypes.object.isRequired,
+    auth: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-    patient: state.patient
+    patient: state.patient,
+    auth: state.auth
 });
 
 export default connect(mapStateToProps, { editPatient, getPatient })(withRouter(EditPatientForm));

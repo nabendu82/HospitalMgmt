@@ -17,6 +17,7 @@ import PatientForm from './components/patients/PatientForm';
 import HospitalForm from './components/hospitals/HospitalForm';
 import EditPatientForm from './components/patients/EditPatientForm';
 import EditHospitalForm from './components/hospitals/EditHospitalForm';
+import EditUserForm from './components/auth/EditUserForm';
 import PrivateRoute from './components/routing/PrivateRoute';
 // Redux
 import { Provider } from 'react-redux';
@@ -55,6 +56,7 @@ const App = () => {
               <PrivateRoute exact path='/users' component={AllUsers} />
               <PrivateRoute exact path='/edit-patient/:id' component={EditPatientForm} />
               <PrivateRoute exact path='/edit-hospital/:id' component={EditHospitalForm} />
+              <PrivateRoute exact path='/edit-user/:id' component={EditUserForm} />
               <PrivateRoute exact path='/patients/:id' component={Patient} />
               <PrivateRoute exact path='/hospitals/:id' component={Hospital} />
             </Switch>

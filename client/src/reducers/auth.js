@@ -9,6 +9,8 @@ import {
     FORGOT_FAIL,
     GET_ALL_USERS,
     USER_ERROR,
+    GET_USER,
+    EDIT_USER,
     LOGOUT
   } from '../actions/types';
 
@@ -17,6 +19,7 @@ import {
     isAuthenticated: null,
     loading: true,
     user: null,
+    calleduser: null,
     allusers:[]
   };
 
@@ -36,6 +39,18 @@ import {
             allusers: payload,
             loading: false
         };
+      case GET_USER:
+        return {
+            ...state,
+            calleduser: payload,
+            loading: false
+        };
+      case EDIT_USER:
+            return {
+                ...state,
+                allusers: [payload, ...state.allusers],
+                loading: false
+            };
       case REGISTER_SUCCESS:
       case LOGIN_SUCCESS:
       case FORGOT_SUCCESS:

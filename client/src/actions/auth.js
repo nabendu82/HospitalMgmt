@@ -10,6 +10,8 @@ import {
   FORGOT_SUCCESS,
   FORGOT_FAIL,
   GET_ALL_USERS,
+  GET_USER,
+  EDIT_USER,
   USER_ERROR,
   LOGOUT
 } from './types';
@@ -149,6 +151,55 @@ export const forgot = (email, password) => async dispatch => {
         });
   }
 }
+
+  // Get called user
+  export const getUser = id => async dispatch => {
+    try {
+      const res = await axios.get(`/api/users/${id}`);
+
+      dispatch({
+        type: GET_USER,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: USER_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
+    }
+  };
+
+// Edit user
+export const editUser = (id, formData, history) => async dispatch => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  try {
+    const res = await axios.put(`/api/users/${id}`, formData, config);
+
+    dispatch({
+      type: EDIT_USER,
+      payload: res.data
+    });
+
+    dispatch(setAlert('User Updated', 'success'));
+    history.push('/home');
+
+  } catch (err) {
+      const errors = err.response.data.errors;
+
+      if (errors) {
+          errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+      }
+      dispatch({
+          type: USER_ERROR,
+          payload: { msg: err.response.statusText, status: err.response.status }
+      });
+  }
+};
 
   // Logout / Clear Profile
 export const logout = () => dispatch => {

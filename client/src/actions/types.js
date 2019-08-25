@@ -24,3 +24,5 @@ export const FORGOT_SUCCESS = 'FORGOT_SUCCESS';
 export const FORGOT_FAIL = 'FORGOT_FAIL';
 export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const USER_ERROR = 'USER_ERROR';
+export const GET_USER = 'GET_USER';
+export const EDIT_USER = 'EDIT_USER';

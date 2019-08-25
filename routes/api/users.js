@@ -136,6 +136,57 @@ router.put(
   }
 );
 
+// @route    PUT api/users/:id
+// @desc     Update a user including role
+// @access   Private
+
+router.put('/:id', auth, async (req, res) => {
+  const {
+      name,
+      email,
+      role
+  } = req.body;
+
+  //Build users object
+  const userField = {};
+  if (name) userField.name = name;
+  if (email) userField.email = email;
+  if (role) userField.role = role;
+
+  try {
+  let user = await User.findOneAndUpdate(
+      { _id: req.params.id },
+      { $set: userField },
+      { new: true, upsert: true }
+    );
+    res.json(user);
+  } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+  }
+});
+
+// @route    GET api/users/:id
+// @desc     Get users by ID
+// @access   Private
+router.get('/:id', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+
+    if (!user) {
+      return res.status(404).json({ msg: 'User not found' });
+    }
+
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    if (err.kind === 'ObjectId') {
+      return res.status(404).json({ msg: 'User not found' });
+    }
+    res.status(500).send('Server Error');
+  }
+});
+
 // @route    GET api/users
 // @desc     Get all users
 // @access   Private
